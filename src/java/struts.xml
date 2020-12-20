@@ -1,0 +1,155 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="default" extends="struts-default">
+        <!--=== ĐIỀU HƯỚNG ===-->
+        <action name="index" class="app.controllers.HomeController"  method="loadContentFirst">
+            <result name="success">index.jsp</result>
+            <result name="failure">Common/error_exception.jsp</result>
+        </action>   
+        <action name="localProfile" class="app.controllers.HomeController" method="loadContentFirst">
+            <result name="success">localProfile.jsp</result>
+            <result name="failure">Common/error_exception.jsp</result>
+        </action>    
+        <action name="globalProfile" class="app.controllers.UserController">
+            <result name="success">globalProfile.jsp</result>
+            <result name="failure">Common/error_exception.jsp</result>
+        </action>     
+        <action name="culprit" class="app.controllers.HomeController" method="loadContentFirst">
+            <result name="success">culprit.jsp</result>
+            <result name="failure">Common/error_exception.jsp</result>
+        </action>   
+        <action name="tables" class="app.controllers.HomeController"   method="loadContentFirst">
+            <result name="success">tables.jsp</result>
+            <result name="failure">Common/error_exception.jsp</result>
+        </action>
+        <action name="history" class="app.controllers.HomeController"   method="loadHistory">
+            <result name="success">history.jsp</result>
+            <result name="failure">Common/error_exception.jsp</result>
+        </action>
+         <action name="forms" class="app.controllers.HomeController"  method="loadContentFirst">
+            <result name="success">forms.jsp</result>
+            <result name="failure">Common/error_exception.jsp</result>
+        </action>   
+        <action name="user" class="app.controllers.HomeController"   method="loadContentFirst">
+            <result name="success">user.jsp</result>
+            <result name="failure">Common/error_exception.jsp</result>
+        </action>
+        
+        <!--=== THAO TÁC TỘI PHẠM ===-->
+        <action name="show_culprit" class="app.controllers.CulpritController"   method="getCulpritAtId">
+            <result name="success">culprit.jsp</result>
+            <result name="failure">Common/error_exception.jsp</result>
+        </action>
+        <action name="edit_culprit" class="app.controllers.CulpritController"   method="editCulprit">
+            <result name="redirect" type="redirect">${url}</result>
+            <result name="failure">tables.jsp</result>
+        </action>
+        <action name="delete_culprit" class="app.controllers.CulpritController"   method="deleteCulprit">
+            <result name="redirect" type="redirect">${url}</result>
+            <result name="failure">Common/error_exception.jsp</result>
+        </action>
+        <action name="add_culprit" class="app.controllers.CulpritController"   method="addCulprit">
+            <result name="redirect" type="redirect">${url}</result>
+            <result name="failure">tables.jsp</result>
+        </action>
+        <!--=== THAO TÁC TRÊN TRANG CÁ NHÂN TỘI PHẠM ===-->
+        <action name="edit_culprit_more" class="app.controllers.CulpritController"   method="editCulpritMore">
+            <result name="redirect" type="redirect">${url}</result>
+            <result name="failure">culprit.jsp</result>
+        </action>
+        <action name="edit_culprit_image" class="app.controllers.CulpritController"   method="editCulpritImage">
+            <result name="redirect" type="redirect">${url}</result>
+            <result name="failure">culprit.jsp</result>
+        </action>
+        <action name="add_culprit_case" class="app.controllers.CulpritController"   method="addCulpritCase">
+            <result name="redirect" type="redirect">${url}</result>
+            <result name="failure">culprit.jsp</result>
+        </action>
+        <action name="delete_culprit_case" class="app.controllers.CulpritController"   method="deleteCulpritCase">
+            <result name="redirect" type="redirect">${url}</result>
+            <result name="failure">culprit.jsp</result>
+        </action>
+        
+        <!--=== THAO TÁC LỊCH SỬ ===-->
+        <action name="delete_all_history" class="app.controllers.HistoryController"   method="deleteAllHistory">
+            <result name="redirect" type="redirect">${url}</result>
+            <result name="failure">history.jsp</result>
+        </action>
+        <action name="delete_history" class="app.controllers.HistoryController"   method="deleteHistory">
+            <result name="redirect" type="redirect">${url}</result>
+            <result name="failure">Common/error_exception.jsp</result>
+        </action>
+        
+        <!--=== THAO TÁC BẢNG NGƯỜI DÙNG ===-->
+        <action name="show_user" class="app.controllers.UserController"   method="getUserAtId">
+            <result name="success">globalProfile.jsp</result>
+            <result name="failure">Common/error_exception.jsp</result>
+        </action>
+        <action name="edit_user" class="app.controllers.UserController"   method="editUser">
+            <result name="redirect" type="redirect">${url}</result>
+            <result name="failure">user.jsp</result>
+        </action>
+        <action name="delete_user" class="app.controllers.UserController"   method="deleteUser">
+            <result name="redirect" type="redirect">${url}</result>
+            <result name="failure">Common/error_exception.jsp</result>
+        </action>
+        <action name="add_user" class="app.controllers.UserController"   method="addUser">
+            <result name="redirect" type="redirect">${url}</result>
+            <result name="failure">user.jsp</result>
+        </action>
+        <!--=== THAO TÁC THÊM TẠI TRANG CÁ NHÂN CỦA NGƯỜI DÙNG ===-->
+        <action name="edit_user_title" class="app.controllers.UserController"   method="editUserTitle">
+            <result name="redirect" type="redirect">${url}</result>
+            <result name="failure">${url}</result>
+        </action>
+        <action name="edit_user_description" class="app.controllers.UserController"   method="editUserDescription">
+            <result name="redirect" type="redirect">${url}</result>
+            <result name="failure">${url}</result>
+        </action>
+        <action name="edit_user_more" class="app.controllers.UserController"   method="editUserMore">
+            <result name="redirect" type="redirect">${url}</result>
+            <result name="failure">${url}</result>
+        </action>
+        
+        
+        <!--=== THAO TÁC VỤ ÁN===-->
+        <action name="edit_case" class="app.controllers.BlogController"   method="editCase">
+            <result name="redirect" type="redirect">${url}</result>
+            <result name="failure">forms.jsp</result>
+        </action>
+        <action name="delete_case" class="app.controllers.BlogController"   method="deleteCase">
+            <result name="redirect" type="redirect">${url}</result>
+            <result name="failure">Common/error_exception.jsp</result>
+        </action>
+        <action name="add_case" class="app.controllers.BlogController"   method="addCase">
+            <result name="redirect" type="redirect">${url}</result>
+            <result name="failure">forms.jsp</result>
+        </action>
+        
+        <!--=== ĐĂNG NHẬP ===-->
+        <action name="login" class="app.controllers.HomeController">
+            <result name="success">login.jsp</result>
+        </action>
+        <action name="userlogin" class="app.controllers.UserController"  method="login">
+            <result name="redirect" type="redirect">${url}</result>
+            <result name="failure">login.jsp</result>
+        </action>
+        <action name="userlogout" class="app.controllers.UserController"  method="logout">
+            <result name="redirect" type="redirect">${url}</result>
+            <result name="failure">Common/error_exception.jsp</result>
+        </action>
+        <action name="userlogingmail" class="app.controllers.UserController"  method="loginGmail">
+            <result name="redirect" type="redirect">${url}</result>
+            <result name="failure" >login.jsp</result>
+        </action>
+        
+        <!--=== BẮT LỖI ===-->
+        <action name="error_notpermitted" class="app.controllers.HomeController">
+            <result name="success" type="redirect">index</result>
+        </action>
+
+    </package>
+</struts>
